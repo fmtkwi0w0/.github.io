@@ -48,7 +48,7 @@
       flex-direction: column;
     }
 
-    header {
+   /* header {
       height: var(--header-h);
       flex: 0 0 auto;
       
@@ -61,7 +61,46 @@
       background: #fff;
       /* border-bottom: 1px solid #ddd; */
       box-sizing: border-box;
+    } */
+    
+    header {
+      height: var(--header-h);
+      flex: 0 0 auto;
+
+      display: flex;
+      align-items: center;
+
+      /* ✅ 右端画像のためのパディング（被り防止） */
+      padding: 0 16px;
+
+      background: #fff;
+      /*border-bottom: 1px solid #ddd;*/
+      box-sizing: border-box;
     }
+
+    /* ✅ 中央寄せタイトル（常に画面中央） */
+    header .title {
+      position: absolute;
+      justify-content: center;
+      left: 50%;
+      transform: translateX(-50%);
+
+      font-weight: 700;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    /* ✅ 右寄せ画像 */
+    header .header-icon {
+      margin-left: auto;           /* ★右寄せ */
+      width: 28px;                 /* 好きなサイズに */
+      height: 28px;
+      object-fit: contain;
+
+      /* 見た目調整 */
+      opacity: 0.95;
+    }
+
 
     /* ✅ 画像表示エリア（ここだけスクロール） */
     .scroll-area {
@@ -86,7 +125,14 @@
 </head>
 <body>
   <div class="app">
-    <header>メンバーシップ</header>
+    <header>
+      
+      <span class="title">メンバーシップ</span>
+
+      <!-- ✅ 右寄せ画像（アイコン） -->
+      <img class="header-icon" src="CancelButton.jpeg" alt="バツ印" />
+
+    </header>
 
     <div class="scroll-area" role="region" aria-label="画像スクロール領域">
       <img src="long_image.jpeg">
