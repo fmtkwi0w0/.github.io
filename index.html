@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- PWA（iOS/Safari向け） -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="MyApp" />
+
+  <!-- iOSホーム画面アイコン（これが効くことが多い） -->
+  ./icon-192.png
+
+  <!-- PWA manifest -->
+  ./manifest.webmanifest
+
+  <style>
+    :root{
+      /* ヘッダー高さ（必要なら調整） */
+      --header-h: 56px;
+
+      /* Safe Area */
+      --sat: env(safe-area-inset-top);
+      --sab: env(safe-area-inset-bottom);
+      --sal: env(safe-area-inset-left);
+      --sar: env(safe-area-inset-right);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+    }
+
+    /* ✅ ページ全体はスクロールさせない（画像エリアだけスクロール） */
+    body {
+      overflow: hidden;
+    }
+
+    .app {
+      /* ✅ iOSのアドレスバー高さ変動に強い */
+      height: 100dvh;
+      padding-top: var(--sat);
+      padding-bottom: var(--sab);
+      padding-left: var(--sal);
+      padding-right: var(--sar);
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      height: var(--header-h);
+      flex: 0 0 auto;
+
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-weight: 700;
+
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    /* ✅ 画像表示エリア（ここだけスクロール） */
+    .scroll-area {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      /* ✅ iOSで“慣性＋弾む”スクロールを出しやすい */
+      -webkit-overflow-scrolling: touch;
+
+      /* スクロール時の見た目 */
+      background: #fff;
+    }
+
+    /* 画像を横幅にフィット */
+    .scroll-area img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>メンバーシップ</header>
+
+    <div class="scroll-area" role="region" aria-label="画像スクロール領域">
+      ./long_image.png
+    </div>
+  </div>
+</body>
+</html>
