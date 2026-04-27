@@ -47,27 +47,12 @@
       display: flex;
       flex-direction: column;
     }
-
-   /* header {
-      height: var(--header-h);
-      flex: 0 0 auto;
-      
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 18px;
-      font-weight: 700;
-
-      background: #fff;
-      /* border-bottom: 1px solid #ddd; */
-      box-sizing: border-box;
-    } */
     
     header {
       height: var(--header-h);
       flex: 0 0 auto;
 
-      position: relative;          /* ★超重要：absoluteの基準をheaderにする */
+      /*position: relative;   */       /* ★超重要：absoluteの基準をheaderにする */
       display: flex;
       align-items: center;
 
@@ -82,7 +67,7 @@
     /* ✅ 中央寄せタイトル（常に画面中央） */
     header .title {
       position: absolute;
-      justify-content: center;
+      /*justify-content: center; */
       left: 50%;
       transform: translateX(-50%);
 
