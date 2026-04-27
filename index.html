@@ -67,6 +67,7 @@
       height: var(--header-h);
       flex: 0 0 auto;
 
+      position: relative;          /* ★超重要：absoluteの基準をheaderにする */
       display: flex;
       align-items: center;
 
@@ -92,8 +93,8 @@
 
     /* ✅ 右寄せ画像 */
     header .header-icon {
-      /*right: 10px; */ 
-      margin-left: auto;       /* ★右寄せ */
+      position: absolute;          /* ★右寄せはabsoluteが堅い */
+      right: 10px;
       width: 35px;                 /* 好きなサイズに */
       height: 35px;
       object-fit: contain;
